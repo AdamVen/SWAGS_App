@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SWAGS</string>
+    <string name="graphs">Graphs</string>
+    <string name="finish">Finish</string>
+    <string name="session">Session</string>
+    <string name="angle">Angle</string>
+    <string name="speed">Speed</string>
+    <string name="position">Position</string>
+    <string name="distance">Distance</string>
+    <string name="current">Current</string>
+</resources>
