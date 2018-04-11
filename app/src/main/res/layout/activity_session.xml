@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.a00816766.swags.SessionActivity">
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/session"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/textViewDate"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewWeldType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weld_type"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textViewDate"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+
+    <Button
+        android:id="@+id/finishButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:contentDescription="@string/finish"
+        android:onClick="openMain"
+        android:text="@string/finish"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSessionTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/finishButton"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeldType"
+        app:layout_constraintLeft_toRightOf="@+id/textViewWeldType"
+        android:onClick="onCheckboxClicked"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSessionOne"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:onClick="onCheckboxClicked"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxSessionTwo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeldType"
+        app:layout_constraintLeft_toRightOf="@+id/textViewWeldType"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxSessionThree"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/finishButton"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxSessionTwo"
+        app:layout_constraintLeft_toRightOf="@+id/textViewWeldType"
+        android:onClick="onCheckboxClicked"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionOneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionOne"
+        app:layout_constraintRight_toRightOf="@+id/textViewSession"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionTwoNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionTwo"
+        app:layout_constraintRight_toRightOf="@+id/textViewSession"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionThreeNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionThree"
+        app:layout_constraintRight_toRightOf="@+id/textViewSession"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionOneDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionOne"
+        app:layout_constraintRight_toRightOf="@+id/textViewDate"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionTwoDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionTwo"
+        app:layout_constraintRight_toRightOf="@+id/textViewDate"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionThreeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionThree"
+        app:layout_constraintRight_toRightOf="@+id/textViewDate"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionOneType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionOne"
+        app:layout_constraintRight_toRightOf="@+id/textViewWeldType"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionTwoType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionTwo"
+        app:layout_constraintRight_toRightOf="@+id/textViewWeldType"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/textViewSessionThreeType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxSessionThree"
+        app:layout_constraintRight_toRightOf="@+id/textViewWeldType"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+
+
+</android.support.constraint.ConstraintLayout>
