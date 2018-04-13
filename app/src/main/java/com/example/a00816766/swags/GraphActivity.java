@@ -64,20 +64,25 @@ public class GraphActivity extends Activity
     private static final int SELECT_SESSION = 0;
     boolean live = true;
     GraphView graph;
-    LineGraphSeries<DataPoint> series;
+    LineGraphSeries<DataPoint> seriesOne;
+    LineGraphSeries<DataPoint> seriesTwo;
+    LineGraphSeries<DataPoint> seriesThree;
 
     Handler h = new Handler();
-    int delay = 500;
+    int delay = 1000;
     Runnable runnable;
+
+    int id = 0;
+    int climb = 0;
 
     @Override
     protected void onResume() {
         //start handler as activity become visible
         h.postDelayed(new Runnable() {
             public void run() {
-                //sheetsThread t = new sheetsThread();
-                //t.start();
-                Log.i("tag", "test");
+                climb++;
+                seriesOne.appendData(new DataPoint(climb, climb), true, 100);
+
                 runnable = this;
 
                 h.postDelayed(runnable, delay);
@@ -96,16 +101,33 @@ public class GraphActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
-        // GraphView graph = (GraphView) findViewById(R.id.graph);
         graph = (GraphView) findViewById(R.id.graph);
-        series = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(10);
+
+        seriesOne = new LineGraphSeries<>(new DataPoint[]{
         });
 
+        seriesTwo = new LineGraphSeries<>(new DataPoint[]{
+                new DataPoint(0, -1),
+                new DataPoint(1, -5),
+                new DataPoint(2, -2),
+                new DataPoint(3, 4),
+                new DataPoint(4, 5)
+
+        });
+
+        seriesThree = new LineGraphSeries<>(new DataPoint[]{
+                new DataPoint(0, 3),
+                new DataPoint(1, 7),
+                new DataPoint(2, 7),
+                new DataPoint(3, 5),
+                new DataPoint(4, 2)
+
+        });
+
+        // GraphView graph = (GraphView) findViewById(R.id.graph);
         //sheetsThread t = new sheetsThread();
         //t.start();
         //graph.addSeries(series);
@@ -115,9 +137,10 @@ public class GraphActivity extends Activity
 
     class sheetsThread extends Thread {
         sheetsThread() {
-            while (true){
+            while (true) {
                 // every 50 ms do thangs
-        }}
+            }
+        }
 
         public void run() {
             // compute primes larger than minPrime
@@ -132,21 +155,46 @@ public class GraphActivity extends Activity
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
-        int i;
 
         // Check which checkbox was clicked
         switch (view.getId()) {
             case R.id.checkBoxAngle:
-                if (checked)
-                    graph.addSeries(series);
-                else
-                    graph.removeSeries(series);
+                if (checked) {
+                    if (id == 0) {
+                        graph.addSeries(seriesOne);
+                        Toast.makeText(this,"added seriesOne",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    if (id == 1) {
+                        graph.addSeries(seriesTwo);
+                    }
+
+                    if (id == 2) {
+                        graph.addSeries(seriesThree);
+                    }
+                } else {
+
+                    if (id == 0) {
+                        graph.removeSeries(seriesOne);
+                        Toast.makeText(this,"removed seriesOne",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    if (id == 1) {
+                        graph.removeSeries(seriesTwo);
+                    }
+
+                    if (id == 2) {
+                        graph.removeSeries(seriesThree);
+                    }
+                }
                 break;
             case R.id.checkBoxCurrent:
                 if (checked)
-                    i = 1;
+                    id = 1;
                 else
-                    i = 2;
+                    id = 2;
                 break;
 
         }
@@ -264,10 +312,15 @@ public class GraphActivity extends Activity
 
             case SELECT_SESSION:
                 if (resultCode == RESULT_OK) {
+                    id = Integer.parseInt(data.getStringExtra("sessionID"));
+                    Toast.makeText(this,Integer.toString(id),
+                            Toast.LENGTH_SHORT).show();
                     //imgTag = data.getStringExtra("tag");
                     //imgKeywords = data.getStringExtra("keyword");:
                 }
         }
+
+
     }
 
     // Open Properties Intent
@@ -426,8 +479,8 @@ public class GraphActivity extends Activity
 
             results.add(0, ", + hi");
 
-           ValueRange response = this.mService.spreadsheets().values().get(spreadsheetId, range).execute();
-           List<List<Object>> values = response.getValues();
+            ValueRange response = this.mService.spreadsheets().values().get(spreadsheetId, range).execute();
+            List<List<Object>> values = response.getValues();
 
             if (values != null) {
                 results.add("Angle, Distance, AccFB, ACCLR, Current, TS");

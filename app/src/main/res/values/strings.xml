@@ -12,4 +12,7 @@
     <string name="weld_type">Weld Type</string>
     <string name="loading">Loading</string>
     <string name="live">Live</string>
+    <string name="title_activity_filter">FilterActivity</string>
+    <string name="filter">Filter</string>
+    <string name="min_current">Min Current</string>
 </resources>

@@ -21,7 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".GraphActivity" />
-        <activity android:name=".SessionActivity"></activity>
+        <activity android:name=".SessionActivity" />
+        <activity
+            android:name=".FilterActivity"
+            android:label="@string/title_activity_filter"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
